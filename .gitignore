@@ -10,10 +10,9 @@ __pycache__/
 *.ipynb
 .ipynb_checkpoints/
 
-*.code_workspace
-
+# VSCode
+*.code-workspace
 .vscode/
-
 
 database/
 
