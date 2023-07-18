@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Email Template</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #ff6600;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ rss_feed_title }}</h1>
+        
+        {% for entry in entries %}
+            <h2>
+                {{loop.index}}. <a href='{{entry.url}}'>{{ entry.title }}</a> - {{ entry.time_ago }}
+            </h2>
+
+            <p>Skills: {{ entry.skills }}</p>
+            {% if entry.keywords|length > 0 %}
+                <p>Keywords: {{ entry.keywords }}</p>
+            {% endif %}
+        
+        {% if not loop.last %}
+        <hr>
+        {% endif %}
+        
+        {% endfor %}
+        
+        <p class="highlight">Thank you for your interest!</p>
+        
+        <div class="footer">
+            This email was generated automatically. Please do not reply.
+        </div>
+    </div>
+</body>
+</html>
